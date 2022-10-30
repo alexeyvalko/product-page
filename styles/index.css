@@ -25,8 +25,8 @@
   font-style: normal;
 }
 
-/* color palette */
 :root {
+  /* color palette */
   --black: #1a1f29;
   --white: #ffffff;
   --white: #ffffff;
@@ -41,10 +41,8 @@
   --pink: #e9a0a7;
   --peach: #f8cab1;
   --brown: #c88252;
-}
 
-/* semantic color*/
-:root {
+  /* semantic color*/
   --color-text: var(--black);
   --color-disabled-1: var(--silver);
   --color-disabled-2: var(--manatee);
@@ -63,10 +61,6 @@
   margin: 0;
 }
 
-html {
-  font-size: 16px;
-}
-
 body {
   font-family: 'Avenir Next Rounded Std', -apple-system, BlinkMacSystemFont,
     Arial, sans-serif;
@@ -78,9 +72,16 @@ body {
   border: none;
   background-color: transparent;
   text-transform: uppercase;
-  font-size: 14px;
-  line-height: 17px;
   text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.16em;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 56px;
 }
 
 .skip-link {
@@ -94,14 +95,19 @@ body {
   transform: translate(-50%, -100%);
   transition: transform 0.3s;
 }
+
 .skip-link:focus {
   transform: translate(-50%, 0%);
 }
 
-.wrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 56px;
+.visually-hidden {
+  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .header {
@@ -111,6 +117,7 @@ body {
 
 .header-navigation {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -185,8 +192,12 @@ body {
   color: var(--color-tertiary-1);
 }
 
+.picked-color {
+  text-transform: capitalize;
+}
+
 .product {
-  padding: 14px 48px 0 48px;
+  padding: 16px 48px 0 48px;
 }
 
 .product-info {
@@ -195,7 +206,7 @@ body {
   gap: 24px;
 }
 
-.product-header {
+.product-heading {
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -211,12 +222,14 @@ body {
 
 .product-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 64px;
 }
 
 .product-content {
   flex-grow: 2;
-  /* width: 100%; */
+  /* flex-shrink: 1;
+  flex-basis: 666px; */
 }
 
 .product-image__wrapper {
@@ -234,23 +247,22 @@ body {
   object-fit: contain;
 }
 
-.product-form__wrapper {
+.product-options {
   flex-grow: 1;
+  /* flex-shrink: 2; */
   max-width: 408px;
   margin-right: 32px;
+}
+
+.product-form {
+  margin-bottom: 48px;
 }
 
 .product-form__options {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 25px;
   margin: 48px 0 40px 0;
-}
-
-.product-form__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 .product-form__fieldset {
@@ -260,7 +272,7 @@ body {
 
 .product-form__legend {
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
   padding: 0;
   font-size: 16px;
   line-height: 20px;
@@ -269,7 +281,8 @@ body {
 
 .product-form__radio-list {
   display: flex;
-  gap: 13px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .product-form__radio-label {
@@ -277,6 +290,7 @@ body {
   min-width: 40px;
   min-height: 40px;
 }
+
 
 .product-form__radio-input {
   position: absolute;
@@ -314,6 +328,19 @@ body {
   letter-spacing: -0.01em;
 }
 
+.radio__color-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--color-tertiary-1);
+  background-color: var(--white);
+  z-index: 10;
+  border: 1px solid var(--color-border);
+  padding: 3px;
+}
+
 .radio-color {
   width: 100%;
   height: 100%;
@@ -333,6 +360,21 @@ body {
   background-color: var(--color-disabled-3);
 }
 
+.radio-item--color[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  top: -39%;
+  left: 26px;
+  width: max-content;
+  border: 1px solid var(--color-border);
+  background-color: var(--white);
+  padding: 3px;
+  z-index: 10;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--color-tertiary-1);
+}
+
 .product-form__radio-input:disabled + .product-form__radio-item::after {
   content: '';
   position: absolute;
@@ -343,37 +385,105 @@ body {
   transform: rotate(-45deg);
 }
 
-.quantity-container {
-  border: 1px solid var(--color-border);
+.quantity__container {
+  padding-top: 5px;
+  width: 120px;
   display: inline-flex;
   align-items: center;
 }
 
-.quantity-input {
+.quantity__input {
+  background-color: var(--white);
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  appearance: textfield;
   display: inline-block;
-  height: 100%;
+  height: 40px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
   border: none;
+  border: 0.0625rem solid var(--color-border);
   order: 1;
+  margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
-.quantity-button__left {
-  order: 0;
-  border-right: 1px solid var(--color-border);
+.quantity__input::-webkit-outer-spin-button,
+.quantity__input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
 }
-.quantity-button__right {
-  border-left: 1px solid var(--color-border);
+
+.quantity__input:hover {
+  border: 0.0625rem solid var(--color-border-dark);
+}
+
+.quantity-button {
+  flex-shrink: 0;
+  position: relative;
+  background-color: var(--white);
+  color: var(--color-tertiary-1);
+  font-size: 18px;
+  line-height: 18px;
+  border: 0.0625rem solid var(--color-border);
+  width: 40px;
+  height: 40px;
+}
+
+.quantity-button::before,
+.quantity-button::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-tertiary-1);
+  width: 10px;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.quantity-button--increase {
+  margin-left: -1px;
+}
+
+.quantity-button--decrease {
+  margin-right: -1px;
+}
+
+.quantity-button--increase::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.quantity__input:hover,
+.quantity-button:hover {
+  z-index: 2;
+  border-color: var(--color-border-dark);
+}
+
+.quantity-button--decrease {
+  order: 0;
+}
+.quantity-button--increase {
   order: 2;
 }
 
+.product-form__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .button-bordered {
-  padding: 15.5px;
+  padding: 15px;
   color: var(--black);
   background: var(--white);
   border: 1px solid var(--color-border);
 }
 
 .button-primary {
-  padding: 15.5px;
+  padding: 15px;
   color: var(--white);
   background: var(--color-primary);
   border: 1px solid var(--color-primary);
@@ -381,6 +491,15 @@ body {
 
 .suggestion {
   padding: 0 128px;
+}
+
+.paragraph__description {
+  margin: 22px 22px 22px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  letter-spacing: -0.01em;
 }
 
 .suggestion__header {
@@ -394,6 +513,7 @@ body {
 }
 
 .suggestion__list {
+  justify-content: center;
   margin-top: 64px;
   width: 100%;
   display: flex;
