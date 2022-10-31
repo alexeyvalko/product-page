@@ -76,17 +76,17 @@
             </div>
 
             <div class="product-description">
-              <details open>
-                <summary>Sizing & Fit</summary>
-                <p>Olga is 175cm, she is wearing a size S.</p>
+              <details class="collapse" open>
+                <summary class="collapse__summary">Sizing & Fit</summary>
+                <p class="paragraph">Olga is 175cm, she is wearing a size S.</p>
               </details>
-              <details>
-                <summary>Composition & Care</summary>
-                <p>Some content</p>
+              <details class="collapse">
+                <summary class="collapse__summary">Composition & Care</summary>
+                <p class="paragraph">Some content</p>
               </details>
-              <details>
-                <summary>Delivery & Returns</summary>
-                <p>Some content</p>
+              <details class="collapse">
+                <summary class="collapse__summary">Delivery & Returns</summary>
+                <p class="paragraph">Some content</p>
               </details>
             </div>
           </div>
@@ -146,7 +146,7 @@
                         <span class="radio-text">l</span>
                       </div>
                     </label>
-                    <label class="product-form__radio-label ">
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
@@ -172,9 +172,17 @@
                   </div>
                 </fieldset>
                 <fieldset class="product-form__fieldset">
-                  <legend class="product-form__legend">Color - <span aria-hidden="true" id="picked-color" class="picked-color">white</span></legend>
+                  <legend class="product-form__legend">
+                    Color -
+                    <span
+                      aria-hidden="true"
+                      id="picked-color"
+                      class="picked-color"
+                      >white</span
+                    >
+                  </legend>
                   <div class="product-form__radio-list">
-                    <label class="product-form__radio-label" >
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
@@ -182,44 +190,68 @@
                         value="white"
                         checked
                       />
-                      <div class="product-form__radio-item radio-item--color" data-title="white">
-                        <div class="radio-color thin-border" style="background-color: var(--white)"></div>
+                      <div
+                        class="product-form__radio-item radio-item--color"
+                        data-title="white"
+                      >
+                        <div
+                          class="radio-color thin-border"
+                          style="background-color: var(--white)"
+                        ></div>
                       </div>
                     </label>
-                    <label class="product-form__radio-label" >
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
                         name="color"
                         value="black"
                       />
-                      <div class="product-form__radio-item radio-item--color" data-title="black">
-                        <div class="radio-color" style="background-color: var(--black)"></div>
+                      <div
+                        class="product-form__radio-item radio-item--color"
+                        data-title="black"
+                      >
+                        <div
+                          class="radio-color"
+                          style="background-color: var(--black)"
+                        ></div>
                       </div>
                     </label>
-                    <label class="product-form__radio-label" >
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
                         name="color"
                         value="gray"
                       />
-                      <div class="product-form__radio-item radio-item--color" data-title="gray">
-                        <div class="radio-color" style="background-color: var(--bombayl)"></div>
+                      <div
+                        class="product-form__radio-item radio-item--color"
+                        data-title="gray"
+                      >
+                        <div
+                          class="radio-color"
+                          style="background-color: var(--bombayl)"
+                        ></div>
                       </div>
                     </label>
-                    <label class="product-form__radio-label" >
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
                         name="color"
                         value="Purple"
                       />
-                      <div class="product-form__radio-item radio-item--color" data-title="Purple latte">
-                        <div class="radio-color" style="background-color: var(--purple)"></div>
+                      <div
+                        class="product-form__radio-item radio-item--color"
+                        data-title="Purple latte"
+                      >
+                        <div
+                          class="radio-color"
+                          style="background-color: var(--purple)"
+                        ></div>
                       </div>
                     </label>
-                    <label class="product-form__radio-label" >
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
@@ -227,12 +259,18 @@
                         value="red"
                         disabled
                       />
-                      <div class="product-form__radio-item radio-item--color" data-title="Pink">
-                        <div class="radio-color" style="background-color: var(--pink)"></div>
+                      <div
+                        class="product-form__radio-item radio-item--color"
+                        data-title="Pink"
+                      >
+                        <div
+                          class="radio-color"
+                          style="background-color: var(--pink)"
+                        ></div>
                       </div>
                     </label>
 
-                    <label class="product-form__radio-label" >
+                    <label class="product-form__radio-label">
                       <input
                         class="product-form__radio-input"
                         type="radio"
@@ -240,124 +278,254 @@
                         value="orange"
                         disabled
                       />
-                      <div class="product-form__radio-item radio-item--color" data-title="Peach">
-                        <div class="radio-color" style="background-color: var(--peach)"></div>
+                      <div
+                        class="product-form__radio-item radio-item--color"
+                        data-title="Peach"
+                      >
+                        <div
+                          class="radio-color"
+                          style="background-color: var(--peach)"
+                        ></div>
                       </div>
                     </label>
                   </div>
                 </fieldset>
                 <fieldset class="product-form__fieldset">
-                  <legend class="product-form__legend"><label for="quantity">Quantity</label></legend>
+                  <legend class="product-form__legend">
+                    <label for="quantity">Quantity</label>
+                  </legend>
                   <div class="quantity__container">
-                    <button type="button" class="button quantity-button quantity-button--decrease"></button>
-                  <button type="button" class="button quantity-button quantity-button--increase"></button>
-                  <input
-                  class="quantity__input"
-                    type="number"
-                    name="quantity"
-                    value="1"
-                    id="quantity"
-                    min="1"
-                  />
+                    <button
+                      type="button"
+                      class="button quantity-button quantity-button--decrease"
+                    ></button>
+                    <button
+                      type="button"
+                      class="button quantity-button quantity-button--increase"
+                    ></button>
+                    <input
+                      class="quantity__input"
+                      type="number"
+                      name="quantity"
+                      value="1"
+                      id="quantity"
+                      min="1"
+                    />
                   </div>
-                  
                 </fieldset>
               </div>
-              <div class="product-form__buttons"> 
-                <button type="submit" name="submit" value="to_card" class="button button-bordered">
+              <div class="product-form__buttons">
+                <button
+                  type="submit"
+                  name="submit"
+                  value="to_card"
+                  class="button button-bordered"
+                >
                   Add to card
                 </button>
-                <button type="submit" name="submit" value="buy_now" class="button button-primary">
+                <button
+                  type="submit"
+                  name="submit"
+                  value="buy_now"
+                  class="button button-primary"
+                >
                   Buy it now
                 </button>
               </div>
             </form>
             <p class="paragraph__description">
               A unisex basic garment with a loose fit. Light and comfortable to
-              your skin. 
+              your skin.
             </p>
-            <p class="paragraph__description">Certification of cotton - <abbr>GOTS</abbr></p>
+            <p class="paragraph__description">
+              Certification of cotton - <abbr>GOTS</abbr>
+            </p>
           </div>
         </div>
       </article>
-      <section class="suggestion wrapper">
+      <section class="suggestion">
         <h2 class="suggestion__header">You may also like</h2>
         <ul class="suggestion__list">
           <li class="suggestion__item">
             <article class="suggestion__product">
-              <img
-                class="suggestion__image"
-                src="./img/pic1.jpg"
-                alt="woman in hoodie"
-              />
-              <h3><a href="">Product name</a></h3>
-              <ul>
-                <li>color1</li>
-                <li>color2</li>
-                <li>color3</li>
-                <li>color4</li>
-              </ul>
-              <p>CHF 40</p>
+              <div class="suggestion_image-wrapper">
+                <img
+                  class="suggestion__image"
+                  src="./img/pic1_sm.jpg"
+                  alt="woman in hoodie"
+                />
+              </div>
+              <div class="suggestion__description">
+                <h3 class="suggestion__heading">
+                  <a class="suggestion__link" href="">Product name</a>
+                </h3>
+                <ul class="suggestion-colors__list">
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--brown)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--peach)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--pink)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--purple)"
+                    ></div>
+                  </li>
+                </ul>
+                <p class="suggestion__price">CHF 40</p>
+              </div>
             </article>
           </li>
           <li class="suggestion__item">
             <article class="suggestion__product">
-              <img
-                class="suggestion__image"
-                src="./img/pic2.jpg"
-                alt="woman in hoodie"
-              />
-              <h3><a href="">Product name</a></h3>
-              <ul>
-                <li>color1</li>
-                <li>color2</li>
-                <li>color3</li>
-                <li>color4</li>
-              </ul>
-              <p>CHF 40</p>
+              <div class="suggestion_image-wrapper">
+                <img
+                  class="suggestion__image"
+                  src="./img/pic2_sm.jpg"
+                  alt="woman in hoodie"
+                />
+              </div>
+
+              <div class="suggestion__description">
+                <h3 class="suggestion__heading">
+                  <a class="suggestion__link" href="">Product name</a>
+                </h3>
+                <ul class="suggestion-colors__list">
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--brown)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--peach)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--pink)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--purple)"
+                    ></div>
+                  </li>
+                </ul>
+                <p class="suggestion__price">CHF 40</p>
+              </div>
             </article>
           </li>
           <li class="suggestion__item">
             <article class="suggestion__product">
               <ul class="suggestion__tag-list">
-                <li class="suggestion__tag-item"><span>Sold out</span></li>
+                <li class="suggestion__tag-item"><span class="suggestion__tag">Sold out</span></li>
               </ul>
-              <img
-                class="suggestion__image"
-                src="./img/pic3.jpg"
-                alt="woman in hoodie"
-              />
-              <h3><a href="">Product name</a></h3>
-              <ul>
-                <li>color1</li>
-                <li>color2</li>
-                <li>color3</li>
-                <li>color4</li>
-              </ul>
-              <p>CHF 40</p>
+              <div class="suggestion_image-wrapper">
+                <img
+                  class="suggestion__image"
+                  src="./img/pic3_sm.jpg"
+                  alt="woman in hoodie"
+                />
+              </div>
+              <div class="suggestion__description">
+                <h3 class="suggestion__heading">
+                  <a class="suggestion__link" href="">Product name</a>
+                </h3>
+                <ul class="suggestion-colors__list">
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--brown)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--peach)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--pink)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--purple)"
+                    ></div>
+                  </li>
+                </ul>
+                <p class="suggestion__price">CHF 40</p>
+              </div>
             </article>
           </li>
           <li class="suggestion__item">
             <article class="suggestion__product">
-              <img
-                class="suggestion__image"
-                src="./img/pic4.jpg"
-                alt="woman in hoodie"
-              />
-              <h3><a href="">Product name</a></h3>
-              <ul>
-                <li>color1</li>
-                <li>color2</li>
-                <li>color3</li>
-                <li>color4</li>
-              </ul>
-              <p>CHF 40</p>
+              <div class="suggestion_image-wrapper">
+                <img
+                  class="suggestion__image"
+                  src="./img/pic4_sm.jpg"
+                  alt="woman in hoodie"
+                />
+              </div>
+              <div class="suggestion__description">
+                <h3 class="suggestion__heading">
+                  <a class="suggestion__link" href="">Product name</a>
+                </h3>
+                <ul class="suggestion-colors__list">
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--brown)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--peach)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--pink)"
+                    ></div>
+                  </li>
+                  <li class="suggestion-colors__item">
+                    <div
+                      class="color-container"
+                      style="background-color: var(--purple)"
+                    ></div>
+                  </li>
+                </ul>
+                <p class="suggestion__price">CHF 40</p>
+              </div>
             </article>
           </li>
         </ul>
       </section>
     </main>
-    <footer>
+    <footer class="footer">
       <div class="footer-container wrapper">
         <section>
           <h2>About</h2>
