@@ -589,15 +589,17 @@ body {
 .suggestion__list {
   margin-top: 4rem;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 4rem;
   list-style: none;
   padding: 0;
 }
 
 .suggestion__item {
-  max-width: calc(25% - 3rem);
-  margin-right: 4rem;
+  position: relative;
+  /* max-width: calc(25% - 3rem);
+  margin-right: 4rem; */
 }
 
 .suggestion__item:last-child {
@@ -670,6 +672,20 @@ body {
 .suggestion__link {
   text-decoration: none;
   color: var(--black);
+}
+
+.suggestion__link:focus {
+  text-decoration: underline;
+}
+
+
+.suggestion__link::after {
+  content: '';
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .suggestion-color__list {
