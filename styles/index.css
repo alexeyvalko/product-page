@@ -56,6 +56,9 @@
   --transition-default: all 0.3s ease;
   --font-default-weight: 400;
   --font-bold-weight: 600;
+
+  --font-family-default:'Avenir Next Rounded Std', -apple-system, BlinkMacSystemFont,
+  Arial, sans-serif;
 }
 
 *,
@@ -66,13 +69,13 @@
 }
 
 body {
-  font-family: 'Avenir Next Rounded Std', -apple-system, BlinkMacSystemFont,
-    Arial, sans-serif;
+  font-family: var(--font-family-default);
   background-color: var(--white);
   color: var(--color-text);
 }
 
 .button {
+  font-family: var(--font-family-default);
   border: none;
   background-color: transparent;
   text-transform: uppercase;
@@ -429,6 +432,7 @@ body {
 }
 
 .quantity__input {
+  font-family: var(--font-family-default);
   background-color: var(--white);
   text-align: center;
   font-size: 1.125rem;
