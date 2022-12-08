@@ -546,6 +546,7 @@ body {
 }
 
 .collapse {
+  overflow: hidden;
   position: relative;
   cursor: pointer;
   border-top: 0.0625rem solid var(--color-border);
@@ -556,7 +557,7 @@ body {
   border-top: none;
 }
 
-.collapse[open] {
+.collapse__content {
   padding-bottom: 2.5rem;
 }
 
@@ -565,12 +566,17 @@ body {
 }
 
 .collapse__summary {
-  font-size: 1rem;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
   list-style: none;
   padding: 2rem 0;
 }
+
+.summary__title {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
 .collapse__summary::-webkit-details-marker {
   display: none;
 }
@@ -885,8 +891,6 @@ body {
 }
 
 @media screen and (max-width: 25.9375rem) {
- 
-
   .suggestion__list {
     grid-template-columns: 1fr;
   }
