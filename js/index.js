@@ -9,8 +9,8 @@ class Accordion {
     this.isCloseAnimation = false;
     this.isOpenAnimation = false;
     this.summary = this.details.querySelector('summary');
-
     if (!this.summary) throw new Error(`Error: didn't find summary.`);
+
     this.summary.addEventListener('click', (e) => this.#onClick(e));
   }
 
@@ -24,20 +24,22 @@ class Accordion {
   }
 
   #collapseAnimation(startHeight, endHeight, isOpening = true) {
+    if (this.animation) {
+      this.animation.cancel();
+    }
+
     if (isOpening) {
       this.isOpenAnimation = true;
     } else {
       this.isCloseAnimation = true;
     }
+
     const keyFrames = {
       height: [startHeight, endHeight],
     };
     const options = {
       duration: 200,
     };
-    if (this.animation) {
-      this.animation.cancel();
-    }
     this.animation = this.details.animate(keyFrames, options);
     this.animation.onfinish = () => {
       this.details.style.height = 'auto';
@@ -56,7 +58,6 @@ class Accordion {
   }
 
   close() {
-    this.isCloseAnimation = true;
     const startHeight = `${this.details.offsetHeight}px`;
     const endHeight = `${this.summary.offsetHeight}px`;
     this.#collapseAnimation(startHeight, endHeight, false);
@@ -77,9 +78,9 @@ const createAccordions = (
   detailsSelector = 'details',
   contentSelector = '.content'
 ) => {
-  const details = [...document.querySelectorAll(detailsSelector)];
-  if (!details.length) throw new Error(`Error: didn't find any details.`);
-  return details.map((details) => {
+  const detailsArray = [...document.querySelectorAll(detailsSelector)];
+  if (!detailsArray.length) throw new Error(`Error: didn't find any details.`);
+  return detailsArray.map((details) => {
     const content = details.querySelector(contentSelector);
     if (content) return new Accordion(details, content);
   });
