@@ -10,15 +10,20 @@ class Accordion {
    * @this Accordion
    * @param {HTMLDetailsElement} details - details element.
    * @param {HTMLElement} content - content element.
+   * @param {number} duration - the duration of animation in ms.
+   * @param {string} easing - The rate of the animation's change over time.
    */
-  constructor(details, content) {
+  constructor(details, content, duration, easing) {
+    this.easing = easing;
+    this.duration = duration;
     this.details = details;
     this.content = content;
     this.isCloseAnimation = false;
     this.isOpenAnimation = false;
     this.summary = this.details.querySelector('summary');
     if (!this.summary) throw new Error(`Error: didn't find summary.`);
-    this.summary.addEventListener('click', this.#clickHandler);
+
+    this.attach();
   }
 
   /**
@@ -55,7 +60,8 @@ class Accordion {
       height: [startHeight, endHeight],
     };
     const options = {
-      duration: 200,
+      duration: this.duration,
+      easing: this.easing,
     };
     this.#animation = this.details.animate(keyFrames, options);
     this.#animation.onfinish = () => {
@@ -97,31 +103,45 @@ class Accordion {
   }
 
   /**
-   * Destroy instance
+   * Attach accordion to the element
    */
-  destroy() {
+  attach() {
+    this.summary.addEventListener('click', this.#clickHandler);
+  }
+
+  /**
+   * Detach accordion from element
+   */
+  detach() {
     this.summary.removeEventListener('click', this.#clickHandler);
-    this.content = null;
-    this.details = null;
-    this.summary = null;
   }
 }
 
-const generateMultipleAccordions = (detailsSelector, contentSelector) => {
+const generateMultipleAccordions = (
+  detailsSelector,
+  contentSelector,
+  duration,
+  easing
+) => {
   const detailsArray = Array.from(document.querySelectorAll(detailsSelector));
   if (!detailsArray.length) throw new Error(`Error: didn't find any details.`);
   return detailsArray.map((details) => {
     const content = details.querySelector(contentSelector);
-    if (content) return new Accordion(details, content);
+    if (content) return new Accordion(details, content, duration, easing);
   });
 };
 
-const generateOneAccordion = (detailsSelector, contentSelector) => {
+const generateOneAccordion = (
+  detailsSelector,
+  contentSelector,
+  duration,
+  easing
+) => {
   const detailsElement = document.querySelector(detailsSelector);
   if (!detailsElement) throw new Error(`Error: didn't find details tag.`);
   const content = detailsElement.querySelector(contentSelector);
   if (!content) throw new Error(`Error: didn't find content tag.`);
-  return new Accordion(detailsElement, content);
+  return new Accordion(detailsElement, content, duration, easing);
 };
 
 /**
@@ -129,24 +149,38 @@ const generateOneAccordion = (detailsSelector, contentSelector) => {
  * @param {Object} options - available options
  * @param {string} options.detailsSelector - The name of the "details" selector
  * @param {string} options.contentSelector - The name of the "content" selector.
+ * @param {string} options.easing - The rate of the animation's change over time. Defaults to "linear"
+ * @param {number} options.duration - The duration of animation in ms.
  * @param {boolean} options.createMultiple - create multiple accordions or only one.
  */
 const createAccordion = ({
+  duration = 200,
+  easing = 'linear',
   detailsSelector = 'details',
   contentSelector = '.content',
   createMultiple = true,
 }) => {
   if (createMultiple) {
-    return generateMultipleAccordions(detailsSelector, contentSelector);
+    return generateMultipleAccordions(
+      detailsSelector,
+      contentSelector,
+      duration,
+      easing
+    );
   } else {
-    return generateOneAccordion(detailsSelector, contentSelector);
+    return generateOneAccordion(
+      detailsSelector,
+      contentSelector,
+      duration,
+      easing
+    );
   }
 };
 
 createAccordion({
+  duration: 300,
+  easing: 'cubic-bezier(0.24, 0.22, 0.015, 1.56)',
   detailsSelector: DETAILS_SELECTOR,
   contentSelector: CONTENT_SELECTOR,
   createMultiple: true,
 });
-
-
