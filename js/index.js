@@ -8,9 +8,9 @@ class Accordion {
   /**
    * Create an accordion.
    * @this Accordion
-   * @param {HTMLDetailsElement} details - details element.
-   * @param {HTMLElement} content - content element.
-   * @param {number} duration - the duration of animation in ms.
+   * @param {HTMLDetailsElement} details - Details element.
+   * @param {HTMLElement} content - Content element.
+   * @param {number} duration - The duration of animation in ms.
    * @param {string} easing - The rate of the animation's change over time.
    */
   constructor(details, content, duration, easing) {
@@ -28,7 +28,7 @@ class Accordion {
 
   /**
    * Handle click
-   * @param {MouseEvent} e - click event.
+   * @param {MouseEvent} e - Click event.
    */
   #onClick(e) {
     e.preventDefault();
@@ -41,9 +41,9 @@ class Accordion {
 
   /**
    * Create animation
-   * @param {string} startHeight - start height in px.
-   * @param {string} endHeight - end height in px.
-   * @param {boolean} isOpening - indicates type of animation (open or close).
+   * @param {string} startHeight - Start height in px.
+   * @param {string} endHeight - End height in px.
+   * @param {boolean} isOpening - Indicates type of animation (open or close).
    */
   #collapseAnimation(startHeight, endHeight, isOpening = true) {
     if (this.#animation) {
@@ -128,7 +128,7 @@ const generateMultipleAccordions = (
   return detailsArray.map((details) => {
     const content = details.querySelector(contentSelector);
     if (content) return new Accordion(details, content, duration, easing);
-  });
+  }).filter((accordion) => !!accordion);
 };
 
 const generateOneAccordion = (
@@ -138,8 +138,8 @@ const generateOneAccordion = (
   easing
 ) => {
   const detailsElement = document.querySelector(detailsSelector);
-  if (!detailsElement) throw new Error(`Error: didn't find details tag.`);
   const content = detailsElement.querySelector(contentSelector);
+  if (!detailsElement) throw new Error(`Error: didn't find details tag.`);
   if (!content) throw new Error(`Error: didn't find content tag.`);
   return new Accordion(detailsElement, content, duration, easing);
 };
@@ -147,10 +147,10 @@ const generateOneAccordion = (
 /**
  * Create accordions.
  * @param {Object} options - available options
- * @param {string} options.detailsSelector - The name of the "details" selector
- * @param {string} options.contentSelector - The name of the "content" selector.
- * @param {string} options.easing - The rate of the animation's change over time. Defaults to "linear"
- * @param {number} options.duration - The duration of animation in ms.
+ * @param {string} options.detailsSelector - The name of the "details" selector. Default "details".
+ * @param {string} options.contentSelector - The name of the "content" selector. Default ".content".
+ * @param {string} options.easing - The rate of the animation's change over time. Defaults to "linear".
+ * @param {number} options.duration - The duration of animation in ms. Default 200.
  * @param {boolean} options.createMultiple - create multiple accordions or only one.
  */
 const createAccordion = ({
@@ -178,8 +178,6 @@ const createAccordion = ({
 };
 
 createAccordion({
-  duration: 300,
-  easing: 'cubic-bezier(0.24, 0.22, 0.015, 1.56)',
   detailsSelector: DETAILS_SELECTOR,
   contentSelector: CONTENT_SELECTOR,
   createMultiple: true,
