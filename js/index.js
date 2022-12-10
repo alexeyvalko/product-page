@@ -58,14 +58,16 @@ class Accordion {
 
     const keyFrames = {
       height: [startHeight, endHeight],
+      overflow: ['hidden', 'hidden'],
     };
+
     const options = {
       duration: this.duration,
       easing: this.easing,
     };
     this.#animation = this.details.animate(keyFrames, options);
     this.#animation.onfinish = () => {
-      this.details.style.height = 'auto';
+      this.details.style.height = '';
       this.details.open = isOpening;
       this.#animation = null;
       this.isCloseAnimation = false;
@@ -124,11 +126,14 @@ const generateMultipleAccordions = (
   easing
 ) => {
   const detailsArray = Array.from(document.querySelectorAll(detailsSelector));
-  if (!detailsArray.length) throw new Error(`Error: didn't find any details.`);
-  return detailsArray.map((details) => {
-    const content = details.querySelector(contentSelector);
-    if (content) return new Accordion(details, content, duration, easing);
-  }).filter((accordion) => !!accordion);
+  if (!detailsArray.length)
+    throw new Error(`Error: didn't find any "details" tag.`);
+  return detailsArray
+    .map((details) => {
+      const content = details.querySelector(contentSelector);
+      if (content) return new Accordion(details, content, duration, easing);
+    })
+    .filter((accordion) => !!accordion);
 };
 
 const generateOneAccordion = (
@@ -138,8 +143,8 @@ const generateOneAccordion = (
   easing
 ) => {
   const detailsElement = document.querySelector(detailsSelector);
+  if (!detailsElement) throw new Error(`Error: didn't find "details" tag.`);
   const content = detailsElement.querySelector(contentSelector);
-  if (!detailsElement) throw new Error(`Error: didn't find details tag.`);
   if (!content) throw new Error(`Error: didn't find content tag.`);
   return new Accordion(detailsElement, content, duration, easing);
 };
