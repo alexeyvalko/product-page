@@ -69,6 +69,7 @@ class Accordion {
     this.#animation.onfinish = () => {
       this.details.style.height = '';
       this.details.open = isOpening;
+      this.#changeARIA();
       this.#animation = null;
       this.isCloseAnimation = false;
       this.isOpenAnimation = false;
@@ -80,6 +81,22 @@ class Accordion {
         this.isCloseAnimation = false;
       }
     };
+  }
+
+  #changeARIA() {
+    this.summary.setAttribute('aria-expanded', this.details.open);
+  }
+
+  #addARIAandRole() {
+    this.summary.setAttribute('role', 'button');
+    this.summary.setAttribute('aria-expanded', this.details.open);
+    this.summary.setAttribute('aria-controls', this.details.id);
+  }
+
+  #removeARIAandRole() {
+    this.summary.removeAttribute('role');
+    this.summary.removeAttribute('aria-expanded');
+    this.summary.removeAttribute('aria-controls');
   }
 
   /**
@@ -109,6 +126,7 @@ class Accordion {
    */
   attach() {
     this.summary.addEventListener('click', this.#clickHandler);
+    this.#addARIAandRole();
   }
 
   /**
@@ -116,8 +134,16 @@ class Accordion {
    */
   detach() {
     this.summary.removeEventListener('click', this.#clickHandler);
+    this.#removeARIAandRole();
   }
 }
+
+const addIdToElement = (element, idPrefix = 1) => {
+  if (!element.id) {
+    element.setAttribute('id', `accordion-${idPrefix}`);
+  }
+  return element;
+};
 
 const generateMultipleAccordions = (
   detailsSelector,
@@ -129,9 +155,12 @@ const generateMultipleAccordions = (
   if (!detailsArray.length)
     throw new Error(`Error: didn't find any "details" tag.`);
   return detailsArray
-    .map((details) => {
+    .map((details, index) => {
       const content = details.querySelector(contentSelector);
-      if (content) return new Accordion(details, content, duration, easing);
+      if (content) {
+        const detailsWithId = addIdToElement(details, index + 1);
+        return new Accordion(detailsWithId, content, duration, easing);
+      }
     })
     .filter((accordion) => !!accordion);
 };
@@ -140,23 +169,26 @@ const generateOneAccordion = (
   detailsSelector,
   contentSelector,
   duration,
-  easing
+  easing,
+  idPrefix
 ) => {
   const detailsElement = document.querySelector(detailsSelector);
   if (!detailsElement) throw new Error(`Error: didn't find "details" tag.`);
   const content = detailsElement.querySelector(contentSelector);
   if (!content) throw new Error(`Error: didn't find content tag.`);
-  return new Accordion(detailsElement, content, duration, easing);
+  const detailsElementWithId = addIdToElement(detailsElement, idPrefix);
+  return new Accordion(detailsElementWithId, content, duration, easing);
 };
 
 /**
  * Create accordions.
  * @param {Object} options - available options
- * @param {string} options.detailsSelector - The name of the "details" selector. Default "details".
- * @param {string} options.contentSelector - The name of the "content" selector. Default ".content".
- * @param {string} options.easing - The rate of the animation's change over time. Defaults to "linear".
- * @param {number} options.duration - The duration of animation in ms. Default 200.
- * @param {boolean} options.createMultiple - create multiple accordions or only one.
+ * @param {string} options.detailsSelector - The name of the "details" selector.
+ * @param {string} options.contentSelector - The name of the "content" selector.
+ * @param {string} [options.easing="linear"] - The rate of the animation's change over time.
+ * @param {number} [options.duration] - The duration of animation in ms. Default 200.
+ * @param {number|string} [options.idPrefix] - The prefix for id in details element. Works only if "createMultiple = false". Default is 1.
+ * @param {boolean} [options.createMultiple] - create multiple accordions or only one.
  */
 const createAccordion = ({
   duration = 200,
@@ -164,6 +196,7 @@ const createAccordion = ({
   detailsSelector = 'details',
   contentSelector = '.content',
   createMultiple = true,
+  idPrefix = 1,
 }) => {
   if (createMultiple) {
     return generateMultipleAccordions(
@@ -177,7 +210,8 @@ const createAccordion = ({
       detailsSelector,
       contentSelector,
       duration,
-      easing
+      easing,
+      idPrefix
     );
   }
 };
