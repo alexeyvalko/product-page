@@ -130,12 +130,12 @@ class Accordion {
    * Open accordion
    */
   open() {
-    this.details.style.height = `${this.details.offsetHeight}px`;
-    this.details.open = true;
     const startHeight = `${this.details.offsetHeight}px`;
     const endHeight = `${
       this.summary.offsetHeight + this.content.offsetHeight
     }px`;
+    this.details.style.height = startHeight;
+    this.details.open = true;
     this.#collapseAnimation(startHeight, endHeight, true);
   }
 
