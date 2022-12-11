@@ -40,7 +40,7 @@ class Accordion {
   }
 
   /**
-   * Create animation
+   * Create collapse animation
    * @param {string} startHeight - Start height in px.
    * @param {string} endHeight - End height in px.
    * @param {boolean} isOpening - Indicates type of animation (open or close).
@@ -69,7 +69,7 @@ class Accordion {
     this.#animation.onfinish = () => {
       this.details.style.height = '';
       this.details.open = isOpening;
-      this.#changeARIA();
+      this.#updateARIA();
       this.#animation = null;
       this.isCloseAnimation = false;
       this.isOpenAnimation = false;
@@ -83,7 +83,7 @@ class Accordion {
     };
   }
 
-  #changeARIA() {
+  #updateARIA() {
     this.summary.setAttribute('aria-expanded', this.details.open);
   }
 
@@ -130,7 +130,7 @@ class Accordion {
   }
 
   /**
-   * Detach accordion from element
+   * Detach accordion
    */
   detach() {
     this.summary.removeEventListener('click', this.#clickHandler);
@@ -182,10 +182,10 @@ const generateOneAccordion = (
 
 /**
  * Create accordions.
- * @param {Object} options - available options
+ * @param {Object} options - config options
  * @param {string} options.detailsSelector - The name of the "details" selector.
  * @param {string} options.contentSelector - The name of the "content" selector.
- * @param {string} [options.easing="linear"] - The rate of the animation's change over time.
+ * @param {string} [options.easing] - The rate of the animation's change over time.
  * @param {number} [options.duration] - The duration of animation in ms. Default 200.
  * @param {number|string} [options.idPrefix] - The prefix for id in details element. Works only if "createMultiple = false". Default is 1.
  * @param {boolean} [options.createMultiple] - create multiple accordions or only one.

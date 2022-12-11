@@ -24,7 +24,6 @@
             class="logo__image"
             src="./img/logo.svg"
             alt=""
-            role="presentation"
         /></a>
         <ul class="header-navigation__list">
           <li class="header-navigation__item">
@@ -125,9 +124,9 @@
                       value="xs"
                       checked
                     />
-                    <div class="radio-item radio-item--size">
+                    <span class="radio-item radio-item--size">
                       <span class="radio-text">xs</span>
-                    </div>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -136,9 +135,9 @@
                       name="size"
                       value="s"
                     />
-                    <div class="radio-item radio-item--size">
+                    <span class="radio-item radio-item--size">
                       <span class="radio-text">s</span>
-                    </div>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -147,9 +146,9 @@
                       name="size"
                       value="m"
                     />
-                    <div class="radio-item radio-item--size">
+                    <span class="radio-item radio-item--size">
                       <span class="radio-text">m</span>
-                    </div>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -158,9 +157,9 @@
                       name="size"
                       value="l"
                     />
-                    <div class="radio-item radio-item--size">
+                    <span class="radio-item radio-item--size">
                       <span class="radio-text">l</span>
-                    </div>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -169,9 +168,9 @@
                       name="size"
                       value="xl"
                     />
-                    <div class="radio-item radio-item--size">
+                    <span class="radio-item radio-item--size">
                       <span class="radio-text">xl</span>
-                    </div>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -181,9 +180,9 @@
                       value="2xl"
                       disabled
                     />
-                    <div class="radio-item radio-item--size">
+                    <span class="radio-item radio-item--size">
                       <span class="radio-text">2xl</span>
-                    </div>
+                    </span>
                   </label>
                 </div>
               </fieldset>
@@ -206,17 +205,17 @@
                       value="white"
                       checked
                     />
-                    <div
+                    <span
                       class="radio-item radio-item--color"
                       data-title="white"
                     >
-                      <div
+                      <span
                         class="radio-color thin-border"
                         style="background-color: var(--white)"
                       >
                         <span class="visually-hidden">White color</span>
-                      </div>
-                    </div>
+                      </span>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -225,17 +224,17 @@
                       name="color"
                       value="black"
                     />
-                    <div
+                    <span
                       class="radio-item radio-item--color"
                       data-title="black"
                     >
-                      <div
+                      <span
                         class="radio-color"
                         style="background-color: var(--black)"
                       >
                         <span class="visually-hidden">Black color</span>
-                      </div>
-                    </div>
+                      </span>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -244,14 +243,14 @@
                       name="color"
                       value="gray"
                     />
-                    <div class="radio-item radio-item--color" data-title="gray">
-                      <div
+                    <span class="radio-item radio-item--color" data-title="gray">
+                      <span
                         class="radio-color"
                         style="background-color: var(--bombayl)"
                       >
                         <span class="visually-hidden">Gray color</span>
-                      </div>
-                    </div>
+                      </span>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -260,17 +259,17 @@
                       name="color"
                       value="Purple latte"
                     />
-                    <div
+                    <span
                       class="radio-item radio-item--color"
                       data-title="Purple latte"
                     >
-                      <div
+                      <span
                         class="radio-color"
                         style="background-color: var(--purple)"
                       >
                         <span class="visually-hidden">Purple latte color</span>
-                      </div>
-                    </div>
+                      </span>
+                    </span>
                   </label>
                   <label class="radio-label">
                     <input
@@ -280,14 +279,14 @@
                       value="red"
                       disabled
                     />
-                    <div class="radio-item radio-item--color" data-title="Pink">
-                      <div
+                    <span class="radio-item radio-item--color" data-title="Pink">
+                      <span
                         class="radio-color"
                         style="background-color: var(--pink)"
                       >
                         <span class="visually-hidden">Pink color</span>
-                      </div>
-                    </div>
+                      </span>
+                    </span>
                   </label>
 
                   <label class="radio-label">
@@ -298,17 +297,17 @@
                       value="orange"
                       disabled
                     />
-                    <div
+                    <span
                       class="radio-item radio-item--color"
                       data-title="Peach"
                     >
-                      <div
+                      <span
                         class="radio-color"
                         style="background-color: var(--peach)"
                       >
                         <span class="visually-hidden">Peach color</span>
-                      </div>
-                    </div>
+                  </span>
+                </span>
                   </label>
                 </div>
               </fieldset>
@@ -590,10 +589,15 @@
             </p>
             <ul class="social">
               <li class="social__item">
-                <a href="#"><span class="icon icon--facebook"></span></a>
+                <a href="#"><span class="icon icon--facebook">
+                  <span class="visially-hidden">facebook</span>
+                </span></a>
+                
               </li>
               <li class="social__item">
-                <a href="#"><span class="icon icon--instagram"></span></a>
+                <a href="#"><span class="icon icon--instagram">
+                  <span class="visially-hidden">instagram</span>
+                </span></a>
               </li>
             </ul>
           </address>
