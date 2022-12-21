@@ -168,6 +168,12 @@ class Accordion {
   }
 }
 
+/**
+ * Create unique id.
+ * @param {string} idPrefix - prefix for id
+ * @param {number} [index] - unique number
+ * @returns {string} unique id
+ */
 const generateUniqueId = (idPrefix, index = 1) => {
   return `${idPrefix}-${index}`;
 };
@@ -182,7 +188,7 @@ const generateUniqueId = (idPrefix, index = 1) => {
  * @param {KeyframeAnimationOptions} [options.keyframeOptions] - Web Animations API keyframe options object
  * @returns {(Accordion | undefined)[]} array of created Accordions
  */
-const createAccordion = ({
+const createAccordions = ({
   detailsSelector = 'details',
   contentSelector = '.content',
   idPrefix = 'accordion',
@@ -201,7 +207,7 @@ const createAccordion = ({
     .filter((accordion) => !!accordion);
 };
 
-createAccordion({
+createAccordions({
   detailsSelector: DETAILS_SELECTOR,
   contentSelector: CONTENT_SELECTOR,
 });
