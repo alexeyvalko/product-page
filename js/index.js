@@ -8,7 +8,7 @@ class Accordion {
 
   /**
    * Create an accordion.
-   * @this Accordion Accordion class
+   * @this Accordion class representing an Accordion
    * @param {HTMLDetailsElement} details - Details element.
    * @param {HTMLElement} content - Content element.
    * @param {string} id - Accordion id.
@@ -21,10 +21,9 @@ class Accordion {
     this.content = content;
     this.isCloseAnimation = false;
     this.isOpenAnimation = false;
-    this.summary = this.details.querySelector('summary');
-    if (!this.summary) throw new Error(`Error: didn't find summary.`);
 
-    this.init();
+    this.summary = this.details.querySelector('summary');
+    if (this.summary) this.init();
   }
 
   /**
