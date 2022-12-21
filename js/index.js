@@ -1,23 +1,22 @@
 const DETAILS_SELECTOR = '.collapse';
 const CONTENT_SELECTOR = '.collapse__content';
 
+/** Class representing a Accordion. */
 class Accordion {
   #animation = null;
   #clickHandler = (e) => this.#onClick(e);
 
   /**
    * Create an accordion.
-   * @this Accordion
+   * @this Accordion Accordion's instance
    * @param {HTMLDetailsElement} details - Details element.
    * @param {HTMLElement} content - Content element.
-   * @param {number} duration - The duration of animation in ms.
-   * @param {string} easing - The rate of the animation's change over time.
    * @param {string} id - Accordion id.
+   * @param {KeyframeAnimationOptions} keyframeOptions - Web Animations API keyframe options.
    */
-  constructor(details, content, duration, easing, id) {
+  constructor(details, content, id, keyframeOptions) {
     this.id = id;
-    this.easing = easing;
-    this.duration = duration;
+    this.keyframeOptions = keyframeOptions;
     this.details = details;
     this.content = content;
     this.isCloseAnimation = false;
@@ -25,7 +24,7 @@ class Accordion {
     this.summary = this.details.querySelector('summary');
     if (!this.summary) throw new Error(`Error: didn't find summary.`);
 
-    this.attach();
+    this.init();
   }
 
   /**
@@ -63,11 +62,7 @@ class Accordion {
       overflow: ['hidden', 'hidden'],
     };
 
-    const options = {
-      duration: this.duration,
-      easing: this.easing,
-    };
-    this.#animation = this.details.animate(keyFrames, options);
+    this.#animation = this.details.animate(keyFrames, this.keyframeOptions);
     this.#animation.onfinish = () => {
       this.details.style.height = '';
       this.details.open = isOpening;
@@ -85,23 +80,35 @@ class Accordion {
     };
   }
 
+ /**
+   * Create element ids
+   */
   #createIDs() {
     this.details.setAttribute('id', `${this.id}-details`);
     this.summary.setAttribute('id', `${this.id}-summary`);
     this.content.setAttribute('id', `${this.id}-content`);
   }
 
+   /**
+   * Remove element ids
+   */
   #removeIDs() {
     this.details.removeAttribute('id');
     this.summary.removeAttribute('id');
     this.content.removeAttribute('id');
   }
 
+   /**
+   * Update ARIA attributes
+   */
   #updateARIA() {
     this.summary.setAttribute('aria-expanded', this.details.open);
   }
 
-  #addARIAandRole() {
+   /**
+   * Add ARIA attributes and roles
+   */
+  #addARIAandRoles() {
     this.summary.setAttribute('role', 'button');
     this.summary.setAttribute('aria-expanded', this.details.open);
     this.summary.setAttribute('aria-controls', this.content.id);
@@ -109,7 +116,10 @@ class Accordion {
     this.content.setAttribute('aria-labelledby', this.summary.id);
   }
 
-  #removeARIAandRole() {
+  /**
+   * Remove ARIA attributes and roles
+   */
+  #removeARIAandRoles() {
     this.summary.removeAttribute('role');
     this.summary.removeAttribute('aria-expanded');
     this.summary.removeAttribute('aria-controls');
@@ -140,20 +150,20 @@ class Accordion {
   }
 
   /**
-   * Attach accordion to the element
+   * initiate accordion
    */
-  attach() {
+  init() {
     this.summary.addEventListener('click', this.#clickHandler);
     this.#createIDs();
-    this.#addARIAandRole();
+    this.#addARIAandRoles();
   }
 
   /**
-   * Detach accordion
+   * Destroy accordion
    */
-  detach() {
+  destroy() {
     this.summary.removeEventListener('click', this.#clickHandler);
-    this.#removeARIAandRole();
+    this.#removeARIAandRoles();
     this.#removeIDs();
   }
 }
@@ -162,93 +172,36 @@ const generateUniqueId = (idPrefix, index = 1) => {
   return `${idPrefix}-${index}`;
 };
 
-const generateMultipleAccordions = (
-  detailsSelector,
-  contentSelector,
-  duration,
-  easing,
-  idPrefix
-) => {
-  const detailsArray = Array.from(document.querySelectorAll(detailsSelector));
-  if (!detailsArray.length)
-    throw new Error(`Error: didn't find any "details" tag.`);
-  return detailsArray
-    .map((details, index) => {
-      const content = details.querySelector(contentSelector);
-      if (content) {
-        const id = generateUniqueId(idPrefix, index + 1);
-        return new Accordion(
-          details,
-          content,
-          duration,
-          easing,
-          id
-        );
-      }
-    })
-    .filter((accordion) => !!accordion);
-};
-
-const generateOneAccordion = (
-  detailsSelector,
-  contentSelector,
-  duration,
-  easing,
-  idPrefix
-) => {
-  const details = document.querySelector(detailsSelector);
-  if (!details) throw new Error(`Error: didn't find "details" tag.`);
-  const content = detailsElement.querySelector(contentSelector);
-  if (!content) throw new Error(`Error: didn't find content tag.`);
-  const id = generateUniqueId(idPrefix);
-  return new Accordion(
-    details,
-    content,
-    duration,
-    easing,
-    id
-  );
-};
 
 /**
  * Create accordions.
  * @param {Object} options - config options
  * @param {string} options.detailsSelector - The name of the "details" selector.
  * @param {string} options.contentSelector - The name of the "content" selector.
- * @param {string} [options.easing] - The rate of the animation's change over time.
- * @param {number} [options.duration] - The duration of animation in ms. Default 200.
  * @param {number|string} [options.idPrefix] - The id prefix for accordion.
- * @param {boolean} [options.createMultiple] - create multiple accordions or only one.
+ * @param {KeyframeAnimationOptions} [options.keyframeOptions] - Web Animations API keyframe options
+ * @returns {(Accordion | undefined)[]} array of created Accordions
  */
 const createAccordion = ({
-  duration = 200,
-  easing = 'linear',
   detailsSelector = 'details',
   contentSelector = '.content',
-  createMultiple = true,
   idPrefix = 'accordion',
+  keyframeOptions = { duration: 200, easing: 'linear' },
 }) => {
-  if (createMultiple) {
-    return generateMultipleAccordions(
-      detailsSelector,
-      contentSelector,
-      duration,
-      easing,
-      idPrefix
-    );
-  } else {
-    return generateOneAccordion(
-      detailsSelector,
-      contentSelector,
-      duration,
-      easing,
-      idPrefix
-    );
-  }
+  const detailsArray = Array.from(document.querySelectorAll(detailsSelector));
+  if (!detailsArray.length) return [];
+  return detailsArray
+    .map((details, index) => {
+      const content = details.querySelector(contentSelector);
+      if (content) {
+        const id = generateUniqueId(idPrefix, index + 1);
+        return new Accordion(details, content, id, keyframeOptions);
+      }
+    })
+    .filter((accordion) => !!accordion);
 };
 
 createAccordion({
   detailsSelector: DETAILS_SELECTOR,
   contentSelector: CONTENT_SELECTOR,
-  createMultiple: true,
 });
