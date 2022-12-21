@@ -1,18 +1,18 @@
 const DETAILS_SELECTOR = '.collapse';
 const CONTENT_SELECTOR = '.collapse__content';
 
-/** Class representing a Accordion. */
+/** Class representing an Accordion. */
 class Accordion {
   #animation = null;
   #clickHandler = (e) => this.#onClick(e);
 
   /**
    * Create an accordion.
-   * @this Accordion Accordion's instance
+   * @this Accordion Accordion class
    * @param {HTMLDetailsElement} details - Details element.
    * @param {HTMLElement} content - Content element.
    * @param {string} id - Accordion id.
-   * @param {KeyframeAnimationOptions} keyframeOptions - Web Animations API keyframe options.
+   * @param {KeyframeAnimationOptions} keyframeOptions - Web Animations API keyframe options object.
    */
   constructor(details, content, id, keyframeOptions) {
     this.id = id;
@@ -150,7 +150,7 @@ class Accordion {
   }
 
   /**
-   * initiate accordion
+   * Initiate accordion
    */
   init() {
     this.summary.addEventListener('click', this.#clickHandler);
@@ -179,7 +179,7 @@ const generateUniqueId = (idPrefix, index = 1) => {
  * @param {string} options.detailsSelector - The name of the "details" selector.
  * @param {string} options.contentSelector - The name of the "content" selector.
  * @param {number|string} [options.idPrefix] - The id prefix for accordion.
- * @param {KeyframeAnimationOptions} [options.keyframeOptions] - Web Animations API keyframe options
+ * @param {KeyframeAnimationOptions} [options.keyframeOptions] - Web Animations API keyframe options object
  * @returns {(Accordion | undefined)[]} array of created Accordions
  */
 const createAccordion = ({
