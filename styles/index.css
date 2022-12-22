@@ -79,7 +79,8 @@ body {
   letter-spacing: 0.16em;
 }
 
-.paragraph {
+
+.paragraph p {
   font-size: 1rem;
   line-height: 1.25;
   letter-spacing: 0.01em;
@@ -229,7 +230,7 @@ body {
 
 .product {
   padding: 1rem 3rem 0 3rem;
-  margin-bottom: 6.125rem;
+  margin-bottom: 6.25rem;
 }
 
 .product__info {
@@ -273,6 +274,8 @@ body {
 .product__image {
   max-height: 44.1875rem;
   max-width: 100%;
+  height: auto;
+  width: 100%;
   object-fit: contain;
 }
 
@@ -568,7 +571,7 @@ body {
 
 .collapse__summary {
   list-style: none;
-  padding: 2rem 0;
+  padding: 1.96rem 0;
 }
 
 .summary__title {
@@ -609,7 +612,7 @@ body {
   transform: rotate(90deg);
 }
 
-.paragraph--description {
+.paragraph--description p {
   margin: 1.375rem 1.375rem 1.375rem 0;
   font-size: 1.125rem;
   line-height: 1.23;
@@ -777,7 +780,7 @@ body {
   font-style: normal;
 }
 
-.paragraph--address {
+.paragraph--address p {
   font-size: 1rem;
   line-height: 2;
   letter-spacing: 0.0625rem;
