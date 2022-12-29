@@ -68,6 +68,10 @@ body {
   color: var(--color-text);
 }
 
+button[disabled] {
+  opacity: 0.6;
+}
+
 .button {
   font-family: var(--font-family-default);
   border: none;
