@@ -44,7 +44,7 @@
             <a class="header-navigation__link" href="#">Search</a>
           </li>
           <li class="header-navigation__item">
-            <a class="header-navigation__link" href="#">Cart (0)</a>
+            <a class="header-navigation__link" href="#" aria-live="polite" id='cart_added'>Cart (0)</a>
           </li>
         </ul>
       </nav>
@@ -57,7 +57,7 @@
         <li class="breadcrumb__item">
           <a class="breadcrumb__link" href="#">Women</a>
         </li>
-        <li class="breadcrumb__item">White unisex t-shirt</li>
+        <li class="breadcrumb__item"><span aria-current="page">White unisex t-shirt</span></li>
       </ol>
     </nav>
     <main id="main" class="wrapper" tabindex="-1">
@@ -138,7 +138,7 @@
               >
                 White unisex t-shirt
               </h2>
-              <div class="product__price">CHF 40</div>
+              <div class="product__price" aria-live="polite">CHF 40</div>
               <small class="tax-info">Tax included</small>
             </div>
             <div class="fieldset-wrapper">
@@ -347,7 +347,7 @@
                 </div>
               </fieldset>
               <fieldset class="fieldset">
-                <legend class="legend legend--quantity">Quantity</legend>
+                <legend class="legend legend--quantity"><label for="quantity">Quantity</label></legend>
                 <div class="quantity__container">
                   <button
                     type="button"
@@ -378,6 +378,7 @@
                 name="submit"
                 value="to_card"
                 class="button button-bordered"
+                aria-live="polite"
               >
                 Add to cart
               </button>
