@@ -10,13 +10,13 @@ export default class Quantity {
    * @param {number} min - min input value.
    * @param {number} max - max input value.
    */
-  constructor(
+  constructor({
     increaseSelector,
     decreaseSelector,
     inputSelector,
     min = 1,
     max = Infinity,
-  ) {
+  }) {
     this.increaseElement = document.querySelector(increaseSelector);
     this.decreaseElement = document.querySelector(decreaseSelector);
     this.inputElement = document.querySelector(inputSelector);

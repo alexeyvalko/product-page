@@ -1,25 +1,17 @@
-import { createAccordions } from "./Accordion.js";
-import Quantity from "./Quantity.js";
-
-const DETAILS_SELECTOR = '.collapse';
-const CONTENT_SELECTOR = '.collapse__content';
-
-const INCREASE_SELECTOR = '#increase_button';
-const DECREASE_SELECTOR = '#decrease_button';
-const QUANTITY_INPUT_SELECTOR = '#quantity';
-
+import { createAccordions } from './Accordion.js';
+import Quantity from './Quantity.js';
+import { OPTIONS } from './options.js';
+import { changeColorText } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   createAccordions({
-    detailsSelector: DETAILS_SELECTOR,
-    contentSelector: CONTENT_SELECTOR,
+    ...OPTIONS.accordion,
   });
-  new Quantity(
-    INCREASE_SELECTOR,
-    DECREASE_SELECTOR,
-    QUANTITY_INPUT_SELECTOR,
-  )
+  new Quantity({
+    ...OPTIONS.quantity,
+  });
+  const form = document.querySelector(OPTIONS.selectors.form)
+  form.addEventListener('change', (e)=>{
+    if(e.target.name === OPTIONS.inputNames.color) changeColorText(e.target.value)
+  })
 });
-
-
-
