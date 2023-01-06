@@ -44,7 +44,7 @@
             <a class="header-navigation__link" href="#">Search</a>
           </li>
           <li class="header-navigation__item">
-            <a class="header-navigation__link" href="#">Cart (0)</a>
+            <a class="header-navigation__link" href="#" ><span aria-live="polite" id='cart_added'>Cart (0)</span> </a>
           </li>
         </ul>
       </nav>
@@ -57,7 +57,7 @@
         <li class="breadcrumb__item">
           <a class="breadcrumb__link" href="#">Women</a>
         </li>
-        <li class="breadcrumb__item">White unisex t-shirt</li>
+        <li class="breadcrumb__item"><span aria-current="page">White unisex t-shirt</span></li>
       </ol>
     </nav>
     <main id="main" class="wrapper" tabindex="-1">
@@ -129,7 +129,7 @@
           </div>
         </div>
         <div class="product__options">
-          <form class="product__form" action="#">
+          <form class="product__form" action="#" id="product__form">
             <div class="product__info">
               <h2
                 class="heading heading--product"
@@ -138,7 +138,7 @@
               >
                 White unisex t-shirt
               </h2>
-              <div class="product__price">CHF 40</div>
+              <div class="product__price" aria-live="polite">CHF 40</div>
               <small class="tax-info">Tax included</small>
             </div>
             <div class="fieldset-wrapper">
@@ -220,7 +220,7 @@
                   Color -
                   <span
                     aria-hidden="true"
-                    id="picked-color"
+                    id="selected_color"
                     class="picked-color"
                     >white</span
                   >
@@ -347,16 +347,18 @@
                 </div>
               </fieldset>
               <fieldset class="fieldset">
-                <legend class="legend legend--quantity">Quantity</legend>
+                <legend class="legend legend--quantity"><label for="quantity">Quantity</label></legend>
                 <div class="quantity__container">
                   <button
                     type="button"
                     class="button quantity-button quantity-button--decrease"
+                    id="decrease_button"
                   >
                     <span class="visually-hidden">decrease</span>
                   </button>
                   <button
                     type="button"
+                    id="increase_button"
                     class="button quantity-button quantity-button--increase"
                   >
                     <span class="visually-hidden">increase</span>
@@ -378,12 +380,13 @@
                 name="submit"
                 value="to_card"
                 class="button button-bordered"
+                aria-live="polite"
               >
-                Add to cart
+              <span aria-live="polite" id="add_to_cart_button_text"> Add to cart</span>
+               
               </button>
               <button
-                type="submit"
-                name="submit"
+                type="button"
                 value="buy_now"
                 class="button button-primary"
               >
@@ -697,6 +700,6 @@
         <small class="copyright__text">© Susparsa 2021</small>
       </div>
     </footer>
-    <script defer="defer" src="./js/index.js"></script>
+    <script defer="defer" src="./js/index.js" type="module"></script>
   </body>
 </html>

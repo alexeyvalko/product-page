@@ -68,6 +68,7 @@ body {
   color: var(--color-text);
 }
 
+
 .button {
   font-family: var(--font-family-default);
   border: none;
@@ -79,6 +80,9 @@ body {
   letter-spacing: 0.16em;
 }
 
+.button[disabled] {
+  opacity: 0.6;
+}
 
 .paragraph p {
   font-size: 1rem;
@@ -123,6 +127,11 @@ body {
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.error-message {
+  padding: 1rem;
+  color: var(--red);
 }
 
 .header {
