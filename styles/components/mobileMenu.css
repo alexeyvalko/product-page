@@ -8,6 +8,7 @@
 }
 
 .hamburger-container {
+  display: none;
   padding: 1rem;
 }
 
