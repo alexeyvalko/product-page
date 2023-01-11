@@ -17,6 +17,11 @@
   <body>
     <header class="header">
       <a class="skip-link" href="#main">Skip to main content</a>
+      <div class="hamburger-container">
+        <div class="hamburger" id="hamburger">
+          <div class="hamburger-line"></div>
+        </div>
+      </div>
       <nav class="header-navigation wrapper">
         <a class="logo" href="/">
           <span class="visually-hidden">Home page</span>
@@ -44,7 +49,9 @@
             <a class="header-navigation__link" href="#">Search</a>
           </li>
           <li class="header-navigation__item">
-            <a class="header-navigation__link" href="#" >Cart (<span aria-live="polite" id='cart_items'>0</span>) </a>
+            <a class="header-navigation__link" href="#"
+              >Cart (<span aria-live="polite" id="cart_items">0</span>)
+            </a>
           </li>
         </ul>
       </nav>
@@ -57,7 +64,9 @@
         <li class="breadcrumb__item">
           <a class="breadcrumb__link" href="#">Women</a>
         </li>
-        <li class="breadcrumb__item"><span aria-current="page">White unisex t-shirt</span></li>
+        <li class="breadcrumb__item">
+          <span aria-current="page">White unisex t-shirt</span>
+        </li>
       </ol>
     </nav>
     <main id="main" class="wrapper" tabindex="-1">
@@ -347,7 +356,9 @@
                 </div>
               </fieldset>
               <fieldset class="fieldset">
-                <legend class="legend legend--quantity"><label for="quantity">Quantity</label></legend>
+                <legend class="legend legend--quantity">
+                  <label for="quantity">Quantity</label>
+                </legend>
                 <div class="quantity__container">
                   <button
                     type="button"
@@ -382,8 +393,9 @@
                 class="button button-bordered"
                 aria-live="polite"
               >
-              <span aria-live="polite" id="add_to_cart_button_text"> Add to cart</span>
-               
+                <span aria-live="polite" id="add_to_cart_button_text">
+                  Add to cart</span
+                >
               </button>
               <button
                 type="button"
@@ -700,6 +712,34 @@
         <small class="copyright__text">© Susparsa 2021</small>
       </div>
     </footer>
+    <div class="menu-overlay" id="mobile_overlay">
+      <div class="mobile-menu menu-hidden" id="mobile_menu">
+        <ul class="mobile-navigation">
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Women</a>
+          </li>
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Men</a>
+          </li>
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Kids</a>
+          </li>
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Company</a>
+          </li>
+
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Account</a>
+          </li>
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Search</a>
+          </li>
+          <li class="mobile-navigation__item">
+            <a class="mobile-navigation__link" href="#">Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <script src="./js/index.js" type="module"></script>
   </body>
 </html>
