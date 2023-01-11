@@ -1,0 +1,78 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-family-default);
+  background-color: var(--white);
+  color: var(--color-text);
+}
+
+
+.button {
+  font-family: var(--font-family-default);
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.14;
+  letter-spacing: 0.16em;
+}
+
+.button[disabled] {
+  opacity: 0.6;
+}
+
+.paragraph p {
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.heading {
+  font-style: normal;
+  font-weight: var(--font-default-weight);
+  color: var(--black);
+}
+
+.wrapper {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+.skip-link {
+  background: var(--black);
+  color: var(--white);
+  height: 3rem;
+  top: 0;
+  left: 50%;
+  padding: 1rem;
+  position: absolute;
+  transform: translate(-50%, -100%);
+  transition: transform 0.3s;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0%);
+}
+
+.visually-hidden {
+  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
+  height: 0.0625rem;
+  width: 0.0625rem;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.error-message {
+  padding: 1rem;
+  color: var(--red);
+}

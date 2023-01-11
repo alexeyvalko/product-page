@@ -1,7 +1,7 @@
 import { createAccordions } from './Accordion.js';
 import Quantity from './Quantity.js';
 import { OPTIONS } from './options.js';
-import { changeColorText } from './utils.js';
+import { changeColorHandler, modalClickFormHandler } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   createAccordions({
@@ -10,8 +10,6 @@ window.addEventListener('DOMContentLoaded', () => {
   new Quantity({
     ...OPTIONS.quantity,
   });
-  const form = document.querySelector(OPTIONS.selectors.form)
-  form.addEventListener('change', (e)=>{
-    if(e.target.name === OPTIONS.inputNames.color) changeColorText(e.target.value)
-  })
+  modalClickFormHandler(OPTIONS.selectors.form);
+  changeColorHandler(OPTIONS.selectors.form)
 });

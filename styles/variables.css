@@ -1,0 +1,35 @@
+:root {
+  /* color palette */
+  --black: #1a1f29;
+  --white: #ffffff;
+  --white: #ffffff;
+  --silver: #cccccc;
+  --concrete: #f2f2f2;
+  --bombayl: #aeaeb0;
+  --manatee: #929499;
+  --gray: #5e626b;
+  --blue: #171c8f;
+  --mirage: #1a1f29;
+  --purple: #ba9be6;
+  --pink: #e9a0a7;
+  --peach: #f8cab1;
+  --brown: #c88252;
+
+  /* semantic color*/
+  --color-text: var(--black);
+  --color-disabled-1: var(--silver);
+  --color-disabled-2: var(--manatee);
+  --color-disabled-3: var(--concrete);
+  --color-tertiary-1: var(--gray);
+  --color-tertiary-3: var(--mirage);
+  --color-primary: var(--blue);
+  --color-border: var(--silver);
+  --color-border-dark: var(--black);
+
+  --transition-default: all 0.3s ease;
+  --font-default-weight: 400;
+  --font-bold-weight: 600;
+
+  --font-family-default: 'Avenir Next Rounded Std', -apple-system,
+    BlinkMacSystemFont, Arial, sans-serif;
+}

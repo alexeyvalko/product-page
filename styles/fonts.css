@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: local('Avenir Next Rounded Std Regular'),
+    local('AvenirNextRoundedStd-Reg'),
+    url('../fonts/AvenirNextRoundedStd-Reg.woff2') format('woff2'),
+    url('../fonts/AvenirNextRoundedStd-Reg.woff') format('woff'),
+    url('../fonts/AvenirNextRoundedStd-Reg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: local('Avenir Next Rounded Std Demi'), local('AvenirNextRoundedStd-Demi'),
+    url('../fonts/AvenirNextRoundedStd-Demi.woff2') format('woff2'),
+    url('../fonts/AvenirNextRoundedStd-Demi.woff') format('woff'),
+    url('../fonts/AvenirNextRoundedStd-Demi.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}

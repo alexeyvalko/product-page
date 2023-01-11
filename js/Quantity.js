@@ -24,13 +24,8 @@ export default class Quantity {
     this.minValue = min;
     this.maxValue = max;
     this.value = Number(this.inputElement.value) || this.minValue;
-    if (min !== -Infinity) this.inputElement.min = this.minValue;
-    if (max !== Infinity) this.inputElement.max = this.maxValue;
-    this.handleIncrease = this.increase.bind(this);
-    this.handleDecrease = this.decrease.bind(this);
-    this.handleChange = this.change.bind(this);
 
-    this._addEventListeners();
+    this._init()
   }
 
   /**
@@ -89,5 +84,15 @@ export default class Quantity {
     this.increaseElement.addEventListener('click', this.handleIncrease);
     this.decreaseElement.addEventListener('click', this.handleDecrease);
     this.inputElement.addEventListener('change', this.handleChange);
+  }
+  
+  _init(){
+    if (this.minValue !== -Infinity) this.inputElement.min = this.minValue;
+    if (this.maxValue !== Infinity) this.inputElement.max = this.maxValue;
+    this.handleIncrease = this.increase.bind(this);
+    this.handleDecrease = this.decrease.bind(this);
+    this.handleChange = this.change.bind(this);
+
+    this._addEventListeners();
   }
 }
