@@ -15,7 +15,7 @@
 .breadcrumb__item {
   padding: 0.24rem 0;
   position: relative;
-  color: var(--color-disabled-2);
+  color: var(--color-tertiary-1);
   line-height: 1.1;
 }
 
@@ -29,7 +29,7 @@
   width: 0.0625rem;
   height: 0.75rem;
   transform: rotate(20deg);
-  background-color: var(--color-disabled-2);
+  background-color: var(--color-tertiary-1);
   margin: 0 0.5rem 0 0.1875rem;
 }
 
