@@ -58,6 +58,9 @@
 }
 
 @media screen and (max-width: 25.9375rem) {
+  .hamburger-container {
+    display: block;
+  }
   .header-navigation {
     flex-direction: row;
     gap: 2rem;
