@@ -31,6 +31,10 @@
   .product__image-wrapper {
     padding-right: 0;
   }
+  
+  .product--two-columns {
+    flex-wrap: wrap;
+  }
 
   .product__options {
     margin: 0;
