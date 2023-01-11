@@ -32,6 +32,10 @@
     padding-right: 0;
   }
 
+  .product__options {
+    margin: 0;
+  }
+
   .tag-list {
     left: 50%;
     transform: translateX(-50%);
