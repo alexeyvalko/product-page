@@ -25,7 +25,7 @@ export const modalClickFormHandler = (form_selector) => {
     const formDataObject = Object.fromEntries(formData.entries());
     changeCartItems(formDataObject.quantity);
     generateModal(
-      `<p style="text-align: center; font-size: 2rem">Items (+${formDataObject.quantity}) successfully added to cart<p>`,
+      `<p style="text-align: center; font-size: 2rem">Items (+${formDataObject.quantity}) successfully added to the cart<p>`,
       'form_modal'
     );
   });

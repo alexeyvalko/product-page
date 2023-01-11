@@ -1,7 +1,7 @@
 .modal {
   z-index: 20;
-  width: 100%;
-  max-width: 675px;
+  width: max-content;
+  max-width: 80vw;
   min-height: 200px;
   max-height: 90%;
   position: fixed;
