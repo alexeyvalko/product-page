@@ -1,9 +1,6 @@
-# spurit-course
+Static ecommerce page with a product.
 
-## Deploy https://valko-spurit.netlify.app/
+## Online [DEMO](https://valko-susparsa.netlify.app/)
 
-# Аккардион
 
-Функция "createAccordion" создаёт анимированные аккордеоны только из тега `<details>`. Такой подход хорош тем, что даже если в скрипте будет ошибка или он не загрузится то на странице останется рабочий аккордеон только без анимации, также `<details>` по умолчанию имеет хорошую доступность.
-
-Функция создаёт Аккордионы и возвращает массив с ними. За создание самого аккордеона отвечает класс "Accordion". Анимация в нём реализуется с помощью "Web Animations API".
+![image](https://user-images.githubusercontent.com/60567379/211812812-e784c16f-0d6f-4c50-b027-690a4d7ea2f7.png)
