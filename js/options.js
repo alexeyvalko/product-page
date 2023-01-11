@@ -14,5 +14,11 @@ export const OPTIONS =  {
   },
   inputNames: {
     color: 'color'
+  },
+  mobileMenu: {
+    overlaySelector: '#mobile_overlay',
+    menuSelector: '#mobile_menu',
+    humbuggerSelector: '#hamburger' ,
+    
   }
 };

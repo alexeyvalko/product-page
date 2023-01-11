@@ -54,6 +54,14 @@
 }
 
 @media screen and (max-width: 25.9375rem) {
+  .header-navigation {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .header-navigation__list {
+    display: none;
+  }
   .suggestion__list {
     grid-template-columns: 1fr;
   }

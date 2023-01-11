@@ -8,6 +8,7 @@
 @import './components/product.css';
 @import './components/suggestions.css';
 @import './components/footer.css';
+@import './components/mobileMenu.css';
 
 @import './mediaQueries.css';
 
