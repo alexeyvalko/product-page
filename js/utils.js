@@ -18,7 +18,7 @@ const changeCartItems = (value) => {
 }
 
 
-export const modalClickFormHandler = (form_selector) => {
+export const submitFormHandler = (form_selector) => {
   document.querySelector(form_selector).addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
