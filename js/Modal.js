@@ -16,13 +16,18 @@ export default class Modal {
       'span',
       'icon',
       'icon_close',
-      'close_modal',
+      'close_modal'
     );
     this.setContent(strategyData);
+    this.addARIAattributes();
     this.appendElements();
     this.closeModalHandler();
   }
 
+  addARIAattributes() {
+    this.modal.setAttribute('aria-modal', 'true');
+  }
+  
   createHtmlNode(element, ...classes) {
     const node = document.createElement(element);
     node.classList.add(...classes);
@@ -39,8 +44,8 @@ export default class Modal {
     }
   }
 
-  appendElements() {;
-    if(this.modalImage.src.length > 0) {
+  appendElements() {
+    if (this.modalImage.src.length > 0) {
       this.modal.append(this.modalCloseBtn, this.modalImage, this.modalContent);
     } else {
       this.modal.append(this.modalCloseBtn, this.modalContent);
