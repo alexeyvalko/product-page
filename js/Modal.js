@@ -13,16 +13,22 @@ export default class Modal {
     this.modal = this.createHtmlNode('div', 'modal', ...this.classes);
     this.modalContent = this.createHtmlNode('div', 'modal_content');
     this.modalCloseBtn = this.createHtmlNode(
-      'span',
+      'button',
       'icon',
       'icon_close',
-      'close_modal',
+      'close_modal'
     );
     this.setContent(strategyData);
+    this.addAttributes();
     this.appendElements();
     this.closeModalHandler();
   }
 
+  addAttributes() {
+    this.modal.setAttribute('tabindex', '-1');
+    this.modal.setAttribute('aria-modal', 'true');
+  }
+  
   createHtmlNode(element, ...classes) {
     const node = document.createElement(element);
     node.classList.add(...classes);
@@ -39,8 +45,8 @@ export default class Modal {
     }
   }
 
-  appendElements() {;
-    if(this.modalImage.src.length > 0) {
+  appendElements() {
+    if (this.modalImage.src.length > 0) {
       this.modal.append(this.modalCloseBtn, this.modalImage, this.modalContent);
     } else {
       this.modal.append(this.modalCloseBtn, this.modalContent);
@@ -66,5 +72,6 @@ export default class Modal {
   openModal() {
     const body = document.querySelector('body');
     body.append(this.overlay);
+    this.modal.focus();
   }
 }
