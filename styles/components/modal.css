@@ -30,8 +30,15 @@
 
 .close_modal {
   position: absolute;
-  top: 16px;
+  top: 22px;
   right: 26px;
+  background: none;
+  padding: 13px;
+  border: none;
+}
+
+.close_modal:focus {
+  outline: 1px solid #333;
 }
 
 .icon_close {
@@ -40,8 +47,9 @@
 
 .icon_close:before, .icon_close:after {
   position: absolute;
-  left: 15px;
-  content: ' ';
+  top: -3px;
+  left: 11px;
+  content: '';
   height: 33px;
   width: 3px;
   border-radius: 5px;
