@@ -91,6 +91,7 @@
 }
 
 .legend--quantity {
+  display: block;
   letter-spacing: 0.0625rem;
 }
 
@@ -222,7 +223,6 @@
 }
 
 .quantity__input {
-  outline: none;
   font-family: var(--font-family-default);
   background-color: var(--white);
   text-align: center;
@@ -234,13 +234,15 @@
   flex-grow: 1;
   flex-shrink: 1;
   width: 100%;
-  border: none;
   border: 0.0625rem solid var(--color-border);
   order: 1;
   margin: 0;
   position: relative;
-  z-index: 1;
   transition: var(--transition-default);
+}
+
+.quantity__input:focus-visible {
+  z-index: 1;
 }
 
 .quantity__input::-webkit-outer-spin-button,
@@ -263,6 +265,10 @@
   width: 2.5rem;
   height: 2.5rem;
   transition: var(--transition-default);
+}
+
+.quantity-button:focus-visible {
+  z-index: 1;
 }
 
 .quantity-button::before,
